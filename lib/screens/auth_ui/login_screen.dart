@@ -1,3 +1,4 @@
+import 'package:ecomm/screens/auth_ui/signup.dart';
 import 'package:ecomm/utils/app_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -70,8 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: "Password"),
                   ),
                 ),
+                const SizedBox(height: 10,),
                 Container(
-                  margin: const EdgeInsets.only(bottom: 10),
                   alignment: Alignment.bottomRight,
                   padding: const EdgeInsets.only(right: 10),
                   child: const Text(
@@ -80,6 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: AppConstant.appSecColor,
                         fontWeight: FontWeight.bold),
                   ),
+                ),
+                 SizedBox(
+                  height: Get.height / 20,
                 ),
                 Container(
                   height: Get.height / 18,
@@ -94,23 +98,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(color: AppConstant.appTextColor),
                       )),
                 ),
-                const Row(
+                SizedBox(
+                  height: Get.height / 20,
+                ),
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Dont have an account ?",
+                    const Text(
+                      "Don't have an account ?",
                       style: TextStyle(
-                          color: AppConstant.appTextColor,
+                          color: AppConstant.appMainColor,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      "Sign Up ?",
-                      style: TextStyle(
-                          color: AppConstant.appTextColor,
-                          fontWeight: FontWeight.bold),
+                    InkWell(
+                      onTap: (){
+                        Get.to(()=> const SignUpScreen());
+                      },
+                      child: const Text(
+                        " Sign Up ",
+                        style: TextStyle(
+                            color: AppConstant.appMainColor,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
-                )
+                ),
+
               ],
             )
           ],

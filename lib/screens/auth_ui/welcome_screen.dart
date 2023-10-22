@@ -1,3 +1,4 @@
+import 'package:ecomm/controllers/google-sign-in-controller.dart';
 import 'package:ecomm/screens/auth_ui/login_screen.dart';
 import 'package:ecomm/utils/app_constant.dart';
 import 'package:flutter/material.dart';
@@ -5,13 +6,16 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+   const WelcomeScreen({super.key});
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+
+  final GoogleSignInController googleSignInController = Get.put(GoogleSignInController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +38,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: const Text(
               "Happy Shopping",
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -43,17 +47,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             height: Get.height / 12,
           ),
           Container(
-            height: Get.height / 12,
+            height: Get.height / 15,
             width: Get.width / 1.2,
             decoration: BoxDecoration(
                 color: AppConstant.appSecColor,
                 borderRadius: BorderRadius.circular(20)),
             child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  googleSignInController.signInWithGoogle();
+                },
                 icon: Image.asset(
                   "assets/images/google.png",
                   width: Get.width / 12,
-                  height: Get.height / 20,
+                  height: Get.height / 25,
                 ),
                 label: const Text(
                   "Sign in with Google",
@@ -64,14 +70,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             height: Get.height / 35,
           ),
           Container(
-            height: Get.height / 12,
+            height: Get.height / 15,
             width: Get.width / 1.2,
             decoration: BoxDecoration(
                 color: AppConstant.appSecColor,
                 borderRadius: BorderRadius.circular(20)),
             child: TextButton.icon(
                 onPressed: () {
-                  Get.offAll( const LoginScreen() );
+                  Get.to( const LoginScreen() );
                 },
                 icon: const Icon(
                   Icons.email,
