@@ -1,10 +1,9 @@
-import 'package:ecomm/screens/auth_ui/login_screen.dart';
 import 'package:ecomm/screens/auth_ui/splash_screen.dart';
 import 'package:ecomm/utils/app_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-import 'screens/auth_ui/welcome_screen.dart';
 
 // import 'screens/user_pannel/main_screen.dart';
 
@@ -26,6 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const SplashScreen(),
+      builder: EasyLoading.init(),
     );
   }
 }
